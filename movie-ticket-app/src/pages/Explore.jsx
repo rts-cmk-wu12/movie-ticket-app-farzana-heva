@@ -1,10 +1,8 @@
-//src/Explore.jsx
-
-
+// src/Explore.jsx
 
 import React, { useEffect, useState, useRef } from "react";
-import { Link,useNavigate } from "react-router-dom";
-import { FiSearch, FiArrowLeft } from "react-icons/fi";
+import { Link, useNavigate } from "react-router-dom";
+import { FiSearch } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import MovieCard from "../components/MovieCard";
 import BackArrow from "../icons/BackArrow";
@@ -42,17 +40,16 @@ const Explore = () => {
     if (isSearchOpen && inputRef.current) inputRef.current.focus();
   }, [isSearchOpen]);
 
-  const activeFirstRow = tab === "now" ? nowShowing : upcoming;
   const activeSecondRow = tab === "now" ? nowShowing : upcoming;
 
   return (
     <div
-      className="bg-[#1B1E25] min-h-screen text-white p-4 space-y-6 mx-auto"
+      className="bg-[#1B1E25] min-h-screen text-white p-4 space-y-6 mx-auto overflow-hidden"
       style={{ maxWidth: "375px" }}
     >
       {/* Header */}
       <div className="flex items-center justify-between">
-       <Link to="/" className="text-gray-400 text-lg font-bold">
+        <Link to="/" className="text-gray-400 text-lg font-bold">
           <BackArrow />
         </Link>
         <h1 className="text-lg font-semibold">Explore Movie</h1>
@@ -89,80 +86,79 @@ const Explore = () => {
 
       {/* Tabs */}
       <div className="w-[340px] flex items-center bg-[#2C2F36] rounded-xl p-[10px] gap-2">
-<button
-    onClick={() => setTab("now")}
-    className={`w-[145px] text-sm font-medium rounded-lg py-2 transition-all duration-200 ${
-      tab === "now" ? "bg-[#54A8E5] text-white shadow-md" : "text-gray-400"
-    }`}
->
-    Now Showing
-</button>
-<button
-    onClick={() => setTab("upcoming")}
-    className={`w-[145px] text-sm font-medium rounded-lg py-2 transition-all duration-200 ${
-      tab === "upcoming" ? "bg-[#54A8E5] text-white shadow-md" : "text-gray-400"
-    }`}
->
-    Upcoming
-</button>
-</div>
-
- {/* Top Movies Row */}
-<div>
-  <div className="flex justify-between items-center mb-2">
-    <h2 className="text-base font-semibold">Top Movies</h2>
-    <span className="text-sm text-gray-400">See more</span>
-  </div>
-  <div className="flex gap-4 overflow-x-auto pb-2">
-    {nowShowing.map((movie) => (
-      <div
-        key={movie.id}
-        onClick={() => {
-          localStorage.setItem("lastMovieId", movie.id);
-          navigate(`/movie/${movie.id}`);
-        }}
-        className="min-w-[140px]"
-      >
-        <MovieCard
-          id={movie.id}
-          title={movie.title}
-          poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          rating={movie.vote_average / 2}
-          size="large"
-        />
+        <button
+          onClick={() => setTab("now")}
+          className={`w-[145px] text-sm font-medium rounded-lg py-2 transition-all duration-200 ${
+            tab === "now" ? "bg-[#54A8E5] text-white shadow-md" : "text-gray-400"
+          }`}
+        >
+          Now Showing
+        </button>
+        <button
+          onClick={() => setTab("upcoming")}
+          className={`w-[145px] text-sm font-medium rounded-lg py-2 transition-all duration-200 ${
+            tab === "upcoming" ? "bg-[#54A8E5] text-white shadow-md" : "text-gray-400"
+          }`}
+        >
+          Upcoming
+        </button>
       </div>
-    ))}
-  </div>
-</div>
 
-{/* Poster Only Second Row */}
-<div>
-  <div className="flex justify-between items-center mb-2 mt-6">
-    <h2 className="text-base font-semibold">
-      {tab === "now" ? "Now Showing" : "Recommended"}
-    </h2>
-    <span className="text-sm text-gray-400">See more</span>
-  </div>
-  <div className="flex gap-3 overflow-x-auto pb-2">
-    {activeSecondRow.map((movie) => (
-      <div
-        key={movie.id}
-        onClick={() => {
-          localStorage.setItem("lastMovieId", movie.id);
-          navigate(`/movie/${movie.id}`);
-        }}
-        className="w-[120px] h-[117px] flex-shrink-0 rounded-xl overflow-hidden bg-gray-800"
-      >
-        <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.title}
-          className="w-full h-full object-cover"
-        />
+      {/* Top Movies Row */}
+      <div>
+        <div className="flex justify-between items-center mb-2">
+          <h2 className="text-base font-semibold">Top Movies</h2>
+          <span className="text-sm text-gray-400">See more</span>
+        </div>
+        <div className="flex gap-4 overflow-x-auto pb-2 hide-scroll">
+          {nowShowing.map((movie) => (
+            <div
+              key={movie.id}
+              onClick={() => {
+                localStorage.setItem("lastMovieId", movie.id);
+                navigate(`/movie/${movie.id}`);
+              }}
+              className="min-w-[140px]"
+            >
+              <MovieCard
+                id={movie.id}
+                title={movie.title}
+                poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                rating={movie.vote_average / 2}
+                size="large"
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
 
+      {/* Poster Only Second Row */}
+      <div>
+        <div className="flex justify-between items-center mb-2 mt-6">
+          <h2 className="text-base font-semibold">
+            {tab === "now" ? "Now Showing" : "Recommended"}
+          </h2>
+          <span className="text-sm text-gray-400">See more</span>
+        </div>
+        <div className="flex gap-3 overflow-x-auto pb-2 hide-scroll">
+          {activeSecondRow.map((movie) => (
+            <div
+              key={movie.id}
+              onClick={() => {
+                localStorage.setItem("lastMovieId", movie.id);
+                navigate(`/movie/${movie.id}`);
+              }}
+              className="w-[120px] h-[117px] flex-shrink-0 rounded-xl overflow-hidden bg-gray-800"
+            >
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

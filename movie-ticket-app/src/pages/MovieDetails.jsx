@@ -58,7 +58,7 @@ export default function MovieDetails() {
   const toggleSynopsis = () => setShowFullSynopsis((prev) => !prev);
 
   return (
-    <div className="pb-6 bg-[#1B1E25] text-white min-h-screen max-w-sm mx-auto pt-8 w-[340px]">
+    <div className="pb-6 bg-[#1B1E25] text-white min-h-screen max-w-sm mx-auto pt-8 w-[340px] pt-2">
 
       {/* Header */}
       <div className="flex justify-between items-center px-4 py-4">
@@ -83,7 +83,7 @@ export default function MovieDetails() {
       </div>
       {/* Title, Director, Rating */}
 
-      <div className="px-5 mt-3">
+      <div className="px-5 mt-3 ">
         <h2 className="text-[20px] font-semibold mb-1 text-white leading-tight">
           {movie.title}
         </h2>

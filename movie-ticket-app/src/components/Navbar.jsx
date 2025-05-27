@@ -61,7 +61,7 @@ export default function Footer() {
 
         margin: "0 auto",
 
-        zIndex: 50,
+        zIndex: 10,
 
       }}
 >

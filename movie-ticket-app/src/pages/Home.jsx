@@ -11,7 +11,7 @@ export default function Home() {
   const [searchResults, setSearchResults] = useState([]);
   const scrollRef = useRef(null);
 
-  // تحديد الموقع
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -26,7 +26,6 @@ export default function Home() {
     );
   }, []);
 
-  // الأفلام القادمة
   useEffect(() => {
     const fetchComingSoon = async () => {
       const res = await fetch(
@@ -40,7 +39,7 @@ export default function Home() {
     fetchComingSoon();
   }, []);
 
-  // السينمات القريبة
+ 
   useEffect(() => {
     if (!location) return;
     const fetchCinemas = async () => {
@@ -105,19 +104,26 @@ export default function Home() {
           className="w-10 h-10 rounded-full border border-gray-600"
         />
       </div>
+{/* البحث */}
+<div className="relative w-[315px] h-[54px] mx-auto">
+  <input
+    type="text"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+    placeholder="Search your favourite movie"
+    className="w-full h-full text-sm placeholder-gray-400 text-white rounded-[12px] border border-[#32363D]"
+    style={{
+      backgroundColor: "rgba(105, 109, 116, 0.3)",
+      padding: "18px 15px 18px 40px",
+    }}
+  />
+  <FiSearch
+    className="absolute left-[15px] top-1/2 transform -translate-y-1/2 text-gray-400"
+    size={18}
+  />
+</div>
 
-      {/* البحث */}
-      <div className="relative">
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-          placeholder="Search your favourite movie"
-          className="w-full bg-[#2C2F36] text-sm rounded-xl pl-10 pr-4 py-2 placeholder-gray-400 focus:outline-none"
-        />
-        <FiSearch className="absolute left-3 top-2.5 text-gray-400" size={18} />
-      </div>
 
       {/* نتائج البحث أو Coming Soon */}
       <div>

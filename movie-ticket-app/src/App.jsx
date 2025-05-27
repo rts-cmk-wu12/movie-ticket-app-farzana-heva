@@ -1,20 +1,20 @@
+// src/App.jsx
 
-//src/App.jsx
-
-import React from "react";
 import AppRoutes from "./routes";
-import Navbar from "./components/Navbar";  
+import Navbar from "./components/Navbar";
+import { useLocation } from "react-router-dom"; // ✅ NEW
 import "./index.css";
 
-
 export default function App() {
+  const location = useLocation();
+  const showNavbar = ["/", "/explore"].includes(location.pathname); 
   return (
     <div
       className="min-h-screen pb-[81px] bg-[#1B1E25] mx-auto"
       style={{ maxWidth: "375px" }}
     >
       <AppRoutes />
-      <Navbar />
+      {showNavbar && <Navbar />} 
     </div>
   );
 }

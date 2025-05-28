@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import CardImage1 from "../assets/Card-Payment-1.png";
 import MasterCardLogo from "../assets/mastercard.png";
 import PaymentSuccessModal from "../components/PaymentSuccessModal";
+import BackArrow from "../icons/BackArrow";
+import { Link } from "react-router-dom";
  
 export default function Checkout() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -64,7 +66,15 @@ export default function Checkout() {
         }`}
         style={{ maxWidth: "420px" }}
       >
-        <h2 className="text-xl font-bold text-white mb-4">Checkout</h2>
+        <div className="flex items-center justify-between px-4 pt-10 mb-6">
+          <Link to="/explore" className="text-gray-400 text-lg">
+            <BackArrow />
+          </Link>
+          <h1 className="text-xl font-bold">Checkout</h1>
+          <div className="w-5" />
+        </div>
+ 
+        <h2 className="text-xl font-bold text-white mb-4">Payment Method</h2>
  
         {/* Payment Method Card */}
         <div className="text-white p-5 relative">
@@ -190,3 +200,5 @@ export default function Checkout() {
     </div>
   );
 }
+ 
+ 

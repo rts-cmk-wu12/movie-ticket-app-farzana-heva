@@ -90,7 +90,7 @@ export default function Home() {
   };
 
   return (
-  <div className="bg-[#1B1E25] min-h-screen text-white p-4 space-y-6 mx-auto relative" style={{ maxWidth: "420px" }}>
+  <div className="bg-[#1B1E25] min-h-screen text-white p-4 space-y-6 mx-auto relative" style={{ width: "100%" }}>
 
       {/* ترحيب */}
       <div className="flex items-center justify-between">
@@ -135,12 +135,12 @@ export default function Home() {
             (movie) => (
               <div
                 key={movie.id}
-                className="snap-start w-[85%] flex-shrink-0 rounded-xl overflow-hidden bg-[#1B1E25] p-2"
+                className="snap-start w-[100%] max-w-[315px] flex-shrink-0 rounded-xl overflow-hidden bg-[#1B1E25] p-2"
               >
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.title}
-                  className="h-48 w-full object-cover rounded-xl"
+                  className="h-48 w-full object-cover rounded-xl aspect-16/9"
                 />
                 <div className="pt-2 pl-1">
                   <p className="text-sm font-semibold truncate">

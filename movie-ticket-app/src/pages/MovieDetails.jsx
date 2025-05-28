@@ -58,7 +58,7 @@ export default function MovieDetails() {
   const toggleSynopsis = () => setShowFullSynopsis((prev) => !prev);
 
   return (
-    <div className="pb-6 bg-[#1B1E25] text-white min-h-screen max-w-sm mx-auto pt-8 w-[340px] pt-2">
+    <div className="pb-6 bg-[#1B1E25] text-white min-h-screen  mx-auto pt-8 pt-2">
 
       {/* Header */}
       <div className="flex justify-between items-center px-4 py-4">

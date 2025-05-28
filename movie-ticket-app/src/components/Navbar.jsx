@@ -17,7 +17,7 @@ export default function Footer() {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-[#1B1E25] flex justify-around items-center text-white py-3 rounded-t-xl z-10 max-w-[23rem] mx-auto">
+    <nav className="fixed bottom-0 left-0 right-0 bg-[#1B1E25] flex justify-around items-center text-white py-3 rounded-t-xl z-10 mx-auto">
       {navItems.map(({ icon: Icon, path }, index) => {
         const isActive = currentPath === path || currentPath.startsWith(path + "/");
 
@@ -29,7 +29,7 @@ export default function Footer() {
               isActive ? "text-[#54A8E5]" : "text-white hover:text-[#54A8E5]"
             }`}
           >
-            <Icon className="w-6 h-6" />
+            <Icon iconStyle={!isActive ? {} : {fill: "#54A8E5"}} />
           </Link>
         );
       })}

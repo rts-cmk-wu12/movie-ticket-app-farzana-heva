@@ -11,7 +11,7 @@ export default function App() {
   return (
     <div
       className="min-h-screen pb-[81px] bg-[#1B1E25] mx-auto"
-      style={{ maxWidth: "375px" }}
+      style={{ width: "100%" }}
     >
       <AppRoutes />
       {showNavbar && <Navbar />} 

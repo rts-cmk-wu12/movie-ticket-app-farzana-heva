@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export default function HomeIcon() {
+export default function HomeIcon({iconStyle}) {
   return (
     <svg
       width="24px"
@@ -19,6 +19,7 @@ export default function HomeIcon() {
       ></g>
       <g id="SVGRepo_iconCarrier">
         <path
+        style={iconStyle}
           d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z"
           fill="#636882"
         ></path>

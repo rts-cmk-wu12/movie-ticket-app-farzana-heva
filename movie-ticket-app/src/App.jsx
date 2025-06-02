@@ -10,8 +10,8 @@ export default function App() {
   const showNavbar = ["/", "/explore"].includes(location.pathname); 
   return (
     <div
-      className="min-h-screen pb-[81px] bg-[#1B1E25] mx-auto"
-      style={{ maxWidth: "375px" }}
+      className="min-h-screen pb-[81px] bg-[#1B1E25] p-[16px]"
+      style={{ width: "100%" }}
     >
       <AppRoutes />
       {showNavbar && <Navbar />} 

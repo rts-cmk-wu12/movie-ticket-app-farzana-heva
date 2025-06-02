@@ -58,7 +58,7 @@ export default function MovieDetails() {
   const toggleSynopsis = () => setShowFullSynopsis((prev) => !prev);
 
   return (
-    <div className="pb-6 bg-[#1B1E25] text-white min-h-screen max-w-sm mx-auto pt-8 w-[340px] pt-2">
+    <div className="pb-6 bg-[#1B1E25] text-white min-h-screen  mx-auto pt-8 pt-2">
 
       {/* Header */}
       <div className="flex justify-between items-center px-4 py-4">
@@ -72,7 +72,7 @@ export default function MovieDetails() {
       {/* Movie Poster */}
 
       {/* Scrollable Preview Thumbnails */}
-      <div className="overflow-x-auto flex gap-4 px-4 mb-4 py-2 snap-x snap-mandatory scroll-smooth hide-scroll">
+      <div className="overflow-x-auto flex gap-4 px-4 mb-4 py-2 snap-x snap-mandatory scroll-smooth hide-scroll justify-self-center">
         {[...Array(2)].map((_, index) => (
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -94,7 +94,7 @@ export default function MovieDetails() {
               Destin Daniel Cretton
             </span>
           </span>
-          <span className="text-[#696D74]">|</span>
+          <span className="text-[#696D74] mx-[0.5rem]">|</span>
           <span className="flex items-center gap-2">
             <FaStar size={16} className="text-[#FFA235] ml-2" />
             <span className="ml-1 text-[#BABFC9]">
@@ -105,17 +105,17 @@ export default function MovieDetails() {
       </div>
 
       {/* Description */}
-      <div className="flex gap-4 flex-wrap gap-2 mt2">
+      <div className="flex gap-4 flex-wrap gap-2 my-[10px]">
         {movie.genres?.slice(0, 2).map((genre) => (
           <span
             key={genre.id}
-            className="bg-[#252932] text-[#B2B5BB] text-sm px-4  h-[29px] flex items-center rounded-lg"
+            className="bg-[#252932] text-[#B2B5BB] text-sm px-4  h-[29px] flex items-center p-[0.5rem] rounded-lg"
           >
             {genre.name}
           </span>
         ))}
         {movie.runtime && (
-          <span className="bg-[#252932] text-[#B2B5BB] text-sm  px-4 h-[29px] flex items-center rounded-lg">
+          <span className="bg-[#252932] text-[#B2B5BB] text-sm  px-4 h-[29px] p-[0.5rem] flex items-center rounded-lg">
             {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m
           </span>
         )}

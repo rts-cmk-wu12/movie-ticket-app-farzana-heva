@@ -1,3 +1,7 @@
+
+// src/components/ETicketMini.jsx
+
+
 import React, { useEffect, useState } from "react";
 import Barcode from "../assets/Barcode.svg"; // Make sure this path is correct
  

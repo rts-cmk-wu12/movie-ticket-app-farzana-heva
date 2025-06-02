@@ -33,7 +33,7 @@ const PaymentSuccessModal = ({ isOpen, onClose }) => {
               className="h-full flex flex-col items-center justify-center text-center px-6 py-8 relative shadow-lg w-full"
               style={{
                 backgroundColor: "#54a8e5",
-                maxWidth: 375,
+                maxWidth: 385,
                 borderTopLeftRadius: "60px",
                 borderTopRightRadius: "60px",
                 borderBottomLeftRadius: "20px",

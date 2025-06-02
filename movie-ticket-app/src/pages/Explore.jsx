@@ -45,7 +45,7 @@ const Explore = () => {
   return (
     <div
       className="bg-[#1B1E25] min-h-screen text-white p-4 space-y-6 mx-auto overflow-hidden"
-      style={{ maxWidth: "375px" }}
+      style={{ width: "100%" }}
     >
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -85,7 +85,7 @@ const Explore = () => {
       )}
 
       {/* Tabs */}
-      <div className="w-[340px] flex items-center bg-[#2C2F36] rounded-xl p-[10px] gap-2">
+      <div className="w-[340px] flex items-center justify-self-center justify-center bg-[#2C2F36] rounded-xl p-[10px] gap-2">
         <button
           onClick={() => setTab("now")}
           className={`w-[145px] text-sm font-medium rounded-lg py-2 transition-all duration-200 ${

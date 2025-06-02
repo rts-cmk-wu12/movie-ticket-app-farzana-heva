@@ -97,7 +97,7 @@ export default function Checkout() {
               name="email"
               value={form.email}
               onChange={handleChange}
-              className={`w-full bg-[#2C2F36] p-3 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none ${
+              className={`w-full bg-[#2C2F36] p-3 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none my-[10px] ${
                 errors.email ? "border border-red-500" : ""
               }`}
               placeholder="Enter your email"
@@ -116,7 +116,7 @@ export default function Checkout() {
               name="name"
               value={form.name}
               onChange={handleChange}
-              className={`w-full bg-[#2C2F36] p-3 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none ${
+              className={`w-full bg-[#2C2F36] p-3 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none my-[10px] ${
                 errors.name ? "border border-red-500" : ""
               }`}
               placeholder="Enter cardholder name"
@@ -133,7 +133,7 @@ export default function Checkout() {
               name="cardNumber"
               value={form.cardNumber}
               onChange={handleChange}
-              className={`w-full bg-[#2C2F36] p-3 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none ${
+              className={`w-full bg-[#2C2F36] p-3 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none my-[10px] ${
                 errors.cardNumber ? "border border-red-500" : ""
               }`}
               placeholder="Enter card number"
@@ -152,7 +152,7 @@ export default function Checkout() {
                 name="date"
                 value={form.date}
                 onChange={handleChange}
-                className={`w-full bg-[#2C2F36] p-3 rounded-xl text-sm text-white focus:outline-none ${
+                className={`w-full bg-[#2C2F36] p-3 rounded-xl text-sm text-white focus:outline-none my-[10px] ${
                   errors.date ? "border border-red-500" : ""
                 }`}
                 placeholder="MM/YY"
@@ -169,7 +169,7 @@ export default function Checkout() {
                 name="cvv"
                 value={form.cvv}
                 onChange={handleChange}
-                className={`w-full bg-[#2C2F36] p-3 rounded-xl text-sm text-white focus:outline-none ${
+                className={`w-full bg-[#2C2F36] p-3 rounded-xl text-sm text-white focus:outline-none my-[10px] ${
                   errors.cvv ? "border border-red-500" : ""
                 }`}
                 placeholder="CVV"
@@ -184,7 +184,7 @@ export default function Checkout() {
           {/* Pay Now Button */}
           <button
             type="submit"
-            className="w-full bg-[#54A8E5] text-white font-bold py-3 rounded-xl mt-4"
+            className="w-full bg-[#54A8E5] text-white font-bold py-3 rounded-xl mt-4 mt-[1rem]"
           >
             Pay Now &nbsp;
             <span className="text-base font-semibold">$99.8</span>

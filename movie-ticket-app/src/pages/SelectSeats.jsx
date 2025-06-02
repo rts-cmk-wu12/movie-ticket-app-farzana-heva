@@ -1,3 +1,7 @@
+//src/pages/SelectSeats.
+
+
+
 import React, { useState, useRef, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 

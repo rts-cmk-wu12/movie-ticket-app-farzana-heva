@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from "react";
 import { FiSearch } from "react-icons/fi";
 import { FaStar, FaMapMarkerAlt } from "react-icons/fa";
@@ -11,7 +12,6 @@ export default function Home() {
   const [searchResults, setSearchResults] = useState([]);
   const scrollRef = useRef(null);
 
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -21,7 +21,7 @@ export default function Home() {
         });
       },
       (error) => {
-        console.error("فشل تحديد الموقع ❌", error);
+        console.error("Failed to get location ❌", error);
       }
     );
   }, []);
@@ -39,7 +39,6 @@ export default function Home() {
     fetchComingSoon();
   }, []);
 
- 
   useEffect(() => {
     if (!location) return;
     const fetchCinemas = async () => {
@@ -73,13 +72,12 @@ export default function Home() {
         });
         setCinemas(enriched);
       } catch (error) {
-        console.error("خطأ في جلب السينمات أو المسافات:", error);
+        console.error("Error fetching cinemas or distances:", error);
       }
     };
     fetchCinemas();
   }, [location]);
 
-  // البحث
   const handleSearch = async () => {
     if (!searchTerm.trim()) return;
     const res = await fetch(
@@ -90,9 +88,7 @@ export default function Home() {
   };
 
   return (
-  <div className="bg-[#1B1E25] min-h-screen text-white p-4 space-y-6 mx-auto relative" style={{ width: "100%" }}>
-
-      {/* ترحيب */}
+    <div className="bg-[#1B1E25] min-h-screen text-white px-4 py-6 space-y-6 mx-auto w-full max-w-[100%] overflow-x-hidden">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm text-gray-400">Welcome Back,</p>
@@ -104,28 +100,26 @@ export default function Home() {
           className="w-10 h-10 rounded-full border border-gray-600"
         />
       </div>
-{/* البحث */}
-<div className="relative w-[315px] h-[54px] mx-auto">
-  <input
-    type="text"
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-    onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-    placeholder="Search your favourite movie"
-    className="w-full h-full text-sm placeholder-gray-400 text-white rounded-[12px] border border-[#32363D]"
-    style={{
-      backgroundColor: "rgba(105, 109, 116, 0.3)",
-      padding: "18px 15px 18px 40px",
-    }}
-  />
-  <FiSearch
-    className="absolute left-[15px] top-1/2 transform -translate-y-1/2 text-gray-400"
-    size={18}
-  />
-</div>
 
+      <div className="relative w-full max-w-full h-[54px]">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+          placeholder="Search your favourite movie"
+          className="w-full h-full text-sm placeholder-gray-400 text-white rounded-[12px] border border-[#32363D]"
+          style={{
+            backgroundColor: "rgba(105, 109, 116, 0.3)",
+            padding: "18px 15px 18px 40px",
+          }}
+        />
+        <FiSearch
+          className="absolute left-[15px] top-1/2 transform -translate-y-1/2 text-gray-400"
+          size={18}
+        />
+      </div>
 
-      {/* نتائج البحث أو Coming Soon */}
       <div>
         <h2 className="text-white font-semibold text-lg mb-2">
           {searchResults.length > 0 ? "Search Results" : "Coming Soon"}
@@ -135,7 +129,7 @@ export default function Home() {
             (movie) => (
               <div
                 key={movie.id}
-                className="snap-start w-[100%] max-w-[315px] flex-shrink-0 rounded-xl overflow-hidden bg-[#1B1E25] p-2"
+                className="snap-start w-full max-w-[315px] flex-shrink-0 rounded-xl overflow-hidden bg-[#1B1E25] p-2"
               >
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -159,10 +153,9 @@ export default function Home() {
         </div>
       </div>
 
-      {/* السينمات القريبة */}
       <div>
         <div className="flex justify-between items-center mb-2">
-          <h2 className="text-white font-semibold text-lg">Cinema Near You</h2>
+          <h2 className="text-white font-semibold text-lg">Cinemas Near You</h2>
           <button
             className="text-sm text-gray-400 hover:underline"
             onClick={() => setShowAll(!showAll)}
@@ -190,7 +183,7 @@ export default function Home() {
             )}`;
 
             return (
-              <div
+              <div 
                 key={idx}
                 className="flex items-center p-3 gap-4 rounded-lg bg-[#1B1E25]"
               >
@@ -216,7 +209,7 @@ export default function Home() {
                   <p className="text-xs text-gray-400">
                     {closingText === "Closed time not available"
                       ? closingText
-                      : `Closed ${closingText}`}
+                      : `Closes at ${closingText}`}
                   </p>
                 </div>
                 <div className="text-right text-sm">
